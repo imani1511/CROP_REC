@@ -1,7 +1,6 @@
 from flask import Flask, render_template, request
 import numpy as np
 import pickle
-import pyttsx3
 
 
 
@@ -10,18 +9,6 @@ model = pickle.load(open('model.pkl', 'rb'))
 
 # creating flask app
 app = Flask(__name__)
-
-
-def speak(audio):
-    """Text-to-speech conversion using pyttsx3"""
-    engine = pyttsx3.init('sapi5')
-    voices = engine.getProperty('voices')
-    rate = engine.getProperty('rate')
-    engine.setProperty('rate', rate-20)
-    engine.setProperty('voice', voices[0].id)
-    engine.say(audio)
-    engine.runAndWait()
-
 
 @app.route('/')
 def index():
@@ -53,8 +40,7 @@ def predict():
         result = "{} is a best crop to be cultivated".format(crop)
     else:
         result = "Sorry are not able to recommend a proper crop for this environment"
-    speak(
-        f"According to the data you provided, the best crop to grow is {result}")
+   
     return render_template('index.html', prediction=result)
 
 
