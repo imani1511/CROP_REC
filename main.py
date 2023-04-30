@@ -1,10 +1,8 @@
-import os
 from flask import Flask, render_template, request
 import numpy as np
-import pandas as pd
-import sklearn
 import pickle
 import pyttsx3
+
 
 
 # importing model
@@ -23,6 +21,7 @@ def speak(audio):
     engine.setProperty('voice', voices[0].id)
     engine.say(audio)
     engine.runAndWait()
+
 
 @app.route('/')
 def index():
