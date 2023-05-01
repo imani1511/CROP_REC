@@ -31,8 +31,8 @@ def predict():
 
     prediction = model.predict(single_pred)
 
-    crop_dict = {1: "Rice", 2: "Maize", 3: "Jute", 4: "Cotton", 5: "Coconut", 6: "Papaya", 7: "Orange", 8: "Apple", 9: "Muskmelon", 10: "Watermelon", 11: "Grapes", 12: "Mango",
-                 13: "Banana", 14: "Pomegranate", 15: "Lentil", 16: "Blackgram", 17: "Mungbean", 18: "Mothbeans", 19: "Pigeonpeas", 20: "Kidneybeans", 21: "Chickpea", 22: "Coffee"}
+    crop_dict = {0: "Rice", 1: "Maize", 2: "Jute", 3: "Cotton", 4: "Coconut", 5: "Papaya", 6: "Orange", 7: "Apple", 8: "Muskmelon", 9: "Watermelon", 10: "Grapes", 11: "Mango",
+                 12: "Banana", 13: "Pomegranate", 14: "Lentil", 15: "Blackgram", 16: "Mungbean", 17: "Mothbeans", 18: "Pigeonpeas", 19: "Kidneybeans", 20: "Chickpea", 21: "Coffee"}
 
     if prediction[0] in crop_dict:
         crop = crop_dict[prediction[0]]

@@ -22,11 +22,20 @@
         font-weight: bold;
         text-align: center;
       }
+
       .card {
-        margin-left: 410px;
         margin-top: 20px;
         color: white;
       }
+
+      @media (min-width: 576px) {
+        .card {
+          margin-left: auto;
+          margin-right: auto;
+          max-width: 18rem;
+        }
+      }
+
       .container {
         font-weight: bold;
         padding-bottom: 10px;
@@ -132,7 +141,12 @@
 
         <div class="row mt-4">
           <div class="col-md-12 text-center">
-            <button type="submit" class="btn btn-primary btn-lg">
+            <button
+              type="button"
+              class="btn btn-primary btn-lg"
+              onclick="recommendCrop()"
+              id="recommend-btn"
+            >
               Get Recommendation
             </button>
           </div>
@@ -140,7 +154,17 @@
       </form>
 
       {% if prediction %}
-      <div class="card bg-dark" style="width: 18rem">
+      <div
+        class="card bg-dark"
+        id="recommendation-card"
+        style="
+          width: 100%;
+          max-width: 18rem;
+          margin: 0 auto;
+          margin-top: 20px;
+          display: none;
+        "
+      >
         <img
           src="{{url_for('static', filename='img.jpg')}}"
           class="card-img-top"
@@ -154,4 +178,20 @@
       {% endif %}
     </div>
   </body>
+  <script>
+    function recommendCrop() {
+      // code to make the recommendation and get the predicted crop
+
+      // show the card with the predicted crop
+      var card = document.getElementById("recommendation-card");
+      card.style.display = "block";
+    }
+
+    const recommendBtn = document.getElementById("recommend-btn");
+    const cropCard = document.getElementById("crop-card");
+
+    recommendBtn.addEventListener("click", () => {
+      cropCard.style.display = "block";
+    });
+  </script>
 </html>
